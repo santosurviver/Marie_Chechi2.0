@@ -22,7 +22,7 @@ def afk(bot: Bot, update: Update):
         reason = ""
 
     sql.set_afk(update.effective_user.id, reason)
-    update.effective_message.reply_text("{} ഇപ്പോൾ കീബോർഡിൽ നിന്നും അകലെ ആണ് ! ".format(update.effective_user.first_name))
+    update.effective_message.reply_text("{} ഇവിടെ എങ്ങും ഇല്ല ........ ജീവിച്ചിരിപ്പുണ്ടോ എന്ന് പോലും അറിയില്ല .... ! ".format(update.effective_user.first_name))
 
 
 @run_async
@@ -34,7 +34,7 @@ def no_longer_afk(bot: Bot, update: Update):
 
     res = sql.rm_afk(user.id)
     if res:
-        update.effective_message.reply_text("{} ഇപ്പോൾ കീബോർഡിൽ തിരിച്ചു വന്നു !".format(update.effective_user.first_name))
+        update.effective_message.reply_text("{} മച്ചാൻ യാത്രയായി എന്ന് പറഞ്ഞിട്ടുണ്ട് ....... !".format(update.effective_user.first_name))
 
 
 @run_async
@@ -61,15 +61,15 @@ def reply_afk(bot: Bot, update: Update):
             if sql.is_afk(user_id):
                 user = sql.check_afk_status(user_id)
                 if not user.reason:
-                    res = "{} ഇപ്പോൾ കീബോർഡിൽ നിന്നും അകലെ ആണ് ! കാരണം :\n{} ".format(fst_name)
+                    res = "{} ഇവിടെ എങ്ങും ഇല്ല ........ ജീവിച്ചിരിപ്പുണ്ടോ എന്ന് പോലും അറിയില്ല .... ! പോയ കാരണം :\n{} ".format(fst_name)
                 else:
-                    res = "{} ഇപ്പോൾ കീബോർഡിൽ നിന്നും അകലെ ആണ് ! കാരണം :\n{}. ".format(fst_name, user.reason)
+                    res = "{} നിങ്ങൾ അന്വേഷിക്കുന്ന ആൾ പുറത്ത് പോയി .... ! കാരണം :\n{}. ".format(fst_name, user.reason)
                 message.reply_text(res)
 
 
 __help__ = """
- - /afk <reason>: അളിയൻ ഇവിടെ ഇല്ലെന്ന് എല്ലാരും അറിയട്ടേ.
- - brb <reason>: afk കമാൻഡിന് സമാനമാണ് - പക്ഷേ ഒരു കമാൻഡ് അല്ല..
+ - /afk <reason>: ഇതും പറഞ്ഞ് പോയിട്ട്, പട്ടി ചന്തയ്ക്ക് പോയതു പോലെ തിരിച്ച് വന്നേക്കരുത് .....!!! .
+ - brb <reason>: ഏമാൻ നാട് വിട്ടതായി അറിയിച്ചോളാം..
 
 AFK എന്ന് അടയാളപ്പെടുത്തുമ്പോൾ, നിങ്ങൾ ലഭ്യമല്ലെന്ന് പറയാൻ ഏതെങ്കിലും പരാമർശങ്ങൾക്ക് ഒരു സന്ദേശമുപയോഗിച്ച് മറുപടി നൽകും!!
 """
